@@ -1,0 +1,5 @@
+BER_Bob,BER_KPA,BER_LR,BER_LSTM,option,scheme,scheme_detail
+0.0,0.24115384615384616,0.22138461538461537,0.4544615384615385,FO,Protected2,two-stage mixed-regime keyed channel with one SPM block
+0.0003846153846153846,0.2714615384615385,0.26461538461538464,0.4453076923076923,WT,Protected2,two-stage mixed-regime keyed channel with one SPM block
+0.00046153846153846153,0.22015384615384614,0.21269230769230768,0.453,FO,ProtectedSPMXPM,two-stage mixed-regime keyed channel with one exploratory SPM+XPM block
+7.692307692307693e-05,0.27376923076923076,0.267,0.45984615384615385,WT,ProtectedSPMXPM,two-stage mixed-regime keyed channel with one exploratory SPM+XPM block

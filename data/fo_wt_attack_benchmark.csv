@@ -1,0 +1,7 @@
+BER_Bob,BER_KPA,BER_LR,BER_LSTM,obs_dim,observed_core_indices,option,scheme,scheme_detail
+0.0,0.0,0.0,0.36953846153846154,13,"[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]",FO,Linear,single-stage linear keyed channel
+0.0,0.2683076923076923,0.269,0.42915384615384616,6,"[7, 8, 9, 10, 11, 12]",WT,Linear,single-stage linear keyed channel
+7.692307692307693e-05,0.21838461538461537,0.21123076923076922,0.46507692307692305,13,"[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]",FO,Protected2,two-stage mixed-regime keyed channel with one SPM block
+0.0,0.26792307692307693,0.27315384615384614,0.4613846153846154,6,"[7, 8, 9, 10, 11, 12]",WT,Protected2,two-stage mixed-regime keyed channel with one SPM block
+0.30646153846153845,0.43523076923076925,0.3686923076923077,0.47707692307692307,13,"[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]",FO,Protected3,three-stage keyed channel with two SPM blocks
+0.34592307692307694,0.375,0.3789230769230769,0.48223076923076924,6,"[7, 8, 9, 10, 11, 12]",WT,Protected3,three-stage keyed channel with two SPM blocks

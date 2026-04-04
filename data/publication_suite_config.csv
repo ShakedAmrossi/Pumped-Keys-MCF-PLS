@@ -1,0 +1,2 @@
+eve_noise_scale,fiber_length_mm,g_max_per_mm,observed_core_indices,out_dir,seed,sigma_noise,tap_fraction,tap_label,true_key
+1.5,150.0,0.1,"[7, 8, 9, 10, 11, 12]",C:\Networks\neural_network_learning\optical encryption\chat_implementation\mcf_pls_figs3,42,0.05,0.1,outer-ring passive tap,"[0.909582, 0.775551, 0.943439, 0.878947, 0.637671, 0.990249, 0.904456, 0.914426, 0.651245, 0.780154, 0.748319, 0.970706, 0.857546]"

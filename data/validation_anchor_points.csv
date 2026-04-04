@@ -1,0 +1,14 @@
+anchor_name,anchor_type,notes,units,value
+signal_coupling_length_model,public-model,Computed from the CME coupling coefficient at 1550 nm,mm,117.62115978548911
+pump_coupling_length_model,public-model,Computed from the CME coupling coefficient at 976 nm,mm,24.705044680548976
+internal_effective_length_1550_phase2_8p2_16p4,internal-simulation,"Internal simulation summary, phase-2 geometry",mm,89.0
+internal_effective_length_976_8p2_18,internal-simulation,"Internal simulation summary, pump-coupling study",mm,200.0
+attenuation_1550,internal-measured,Internal measurement note: attenuation anchor,dB/m,23.4
+spm_phi_std_gamma_0.0,legacy-spm-sweep,Legacy normalized SPM sweep: gamma_NL=0.0,rad,0.0
+spm_phi_std_gamma_0.1,legacy-spm-sweep,Legacy normalized SPM sweep: gamma_NL=0.1,rad,0.05682344335113837
+spm_phi_std_gamma_0.5,legacy-spm-sweep,Legacy normalized SPM sweep: gamma_NL=0.5,rad,0.28028510951439334
+spm_phi_std_gamma_1.0,legacy-spm-sweep,Legacy normalized SPM sweep: gamma_NL=1.0,rad,0.572110782829766
+spm_phi_std_gamma_2.0,legacy-spm-sweep,Legacy normalized SPM sweep: gamma_NL=2.0,rad,1.1564551938159189
+spm_phi_std_gamma_5.0,legacy-spm-sweep,Legacy normalized SPM sweep: gamma_NL=5.0,rad,2.8462658740258377
+spm_phi_std_gamma_10.0,legacy-spm-sweep,Legacy normalized SPM sweep: gamma_NL=10.0,rad,5.805914269850046
+spm_phi_std_gamma_20.0,legacy-spm-sweep,Legacy normalized SPM sweep: gamma_NL=20.0,rad,11.44537976127538

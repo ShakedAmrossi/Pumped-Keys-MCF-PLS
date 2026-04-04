@@ -1,0 +1,16 @@
+notes,parameter,source,units,validation_status,value
+1550 nm core refractive index listed in the internal simulation summary,n_core_1550,internal simulation summary / vendor data,index,anchored,1.44934
+Phase-2 DeltaRI = 0.00479 appears in the internal simulation summary,delta_n_phase2,internal simulation summary / vendor data,index,anchored,0.00479
+8.2 um geometry is the common reference geometry across the current manuscript,core_diameter,public geometry + internal simulation summary,um,anchored,8.2
+16.4 um is the baseline pitch for the 13-core public geometry,pitch,public geometry + internal simulation summary,um,anchored,16.4
+Main signal wavelength,lambda_signal,SREP29080 / system definition,um,anchored,1.55
+Internal sources explicitly use 976 nm rather than 980 nm,lambda_pump,internal design note + internal simulation summary,um,anchored,0.976
+Used in fig_validation and consistent with the public coupling-trend argument,kappa_signal_model,CME model,rad/mm,public-cross-check,0.013354708707681738
+Shorter pump coupling length than signal coupling length,kappa_pump_model,CME model,rad/mm,public-cross-check,0.06358200712066032
+Characteristic coupling length at 1550 nm,lc_signal_model,CME model,mm,public-cross-check,117.62115978548911
+Characteristic coupling length at 976 nm,lc_pump_model,CME model,mm,public-cross-check,24.705044680548976
+"Logged as approximately 0.2x in the legacy validation output, consistent with SREP29080 Fig. 3",kappa_sig_over_kappa_pump,CME model + public trend,ratio,public-cross-check,0.2100391181791155
+Measured 1550 nm attenuation reported in the internal measurement note,attenuation_1550_measured,internal measurement note,dB/m,internal-measured,23.4
+Internal simulation summary reports 89 mm effective length for the 8.2 um / 16.4 um phase-2 fiber,internal_effective_length_1550_phase2_8p2_16p4,internal simulation summary,mm,internal-simulated,89.0
+Internal simulation summary reports 200 mm effective length for 976 nm at 8.2 um / 18 um,internal_effective_length_976_8p2_18,internal simulation summary,mm,internal-simulated,200.0
+Selected to stay in the high-mixing regime while remaining physically plausible,length_reference_run,publication suite choice,mm,chosen-operating-point,150.0
