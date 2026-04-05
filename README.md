@@ -11,7 +11,20 @@
 
 ```
 pump_keyed_mcf_pls_repo/
-├── mcf_pls_sim_v3.py          # Full simulation and benchmark suite
+├── run.py                      # Entry point — reproduces all publication results
+├── mcf_pls_sim_v3.py          # Original monolithic script (kept for reference)
+├── mcf_pls/                    # Publication-ready Python package
+│   ├── __init__.py
+│   ├── physics.py              # FiberParams, MCFGeometry, CMESimulator, MCFEncryption
+│   ├── nonlinear.py            # SPM/XPM, saturable absorber, security metrics
+│   ├── adversaries.py          # Neural Eve models (MLP, LSTM, Transformer, Hybrid)
+│   ├── evaluation.py           # Attack evaluators, dataset builders, observation models
+│   ├── benchmarks.py           # Full publication benchmark suite
+│   └── utils.py                # I/O helpers, calibration writers, validation figures
+├── legacy/                     # Exploratory code (NOT called by run.py)
+│   ├── __init__.py
+│   ├── figure_sweeps.py        # Old figure functions from v1/v2 development
+│   └── README.md               # Explains what is here and why
 ├── data/                       # All CSV result files (one per figure/table)
 │   ├── fo_wt_attack_benchmark.csv
 │   ├── fo_wt_kpa_lr_sample_complexity.csv
@@ -32,23 +45,20 @@ pump_keyed_mcf_pls_repo/
 │   ├── validation_anchor_points.csv
 │   ├── publication_suite_config.csv
 │   └── reproducibility_manifest.csv
-├── figures/                    # All publication figures (PNG, 200 dpi)
-│   ├── fig0_mcf_geometry.png
-│   ├── fig1_transfer_matrix.png
-│   ├── fig_validation.png
-│   ├── fig_validation_calibration_overview.png
-│   ├── fig_attack_benchmark_fo_wt.png
-│   ├── fig_kpa_lr_sample_complexity_fo_wt.png
-│   ├── fig_lstm_training_size_fo_wt.png
-│   ├── fig_core_scaling_13_19_37.png
-│   ├── fig_protected2_37core_multiseed.png
-│   ├── fig_protected2_37core_sample_complexity.png
-│   ├── fig_protected2_37core_tap_sensitivity.png
-│   ├── fig_spm_xpm_combo_37core.png
-│   └── fig_xpm_exploratory_benchmark.png
-└── manuscript/
-    ├── Pump-Keyed_MCF_PLS_submission_revised.docx   # Main manuscript
-    └── Pump-Keyed_MCF_PLS_Supplementary_Information.docx
+└── figures/                    # All publication figures (PNG, 200 dpi)
+    ├── fig0_mcf_geometry.png
+    ├── fig1_transfer_matrix.png
+    ├── fig_validation.png
+    ├── fig_validation_calibration_overview.png
+    ├── fig_attack_benchmark_fo_wt.png
+    ├── fig_kpa_lr_sample_complexity_fo_wt.png
+    ├── fig_lstm_training_size_fo_wt.png
+    ├── fig_core_scaling_13_19_37.png
+    ├── fig_protected2_37core_multiseed.png
+    ├── fig_protected2_37core_sample_complexity.png
+    ├── fig_protected2_37core_tap_sensitivity.png
+    ├── fig_spm_xpm_combo_37core.png
+    └── fig_xpm_exploratory_benchmark.png
 ```
 
 ---
@@ -73,14 +83,19 @@ pip install numpy scipy matplotlib torch
 ### Run the full publication suite
 
 ```bash
-python mcf_pls_sim_v3.py
+python run.py
 ```
 
 This regenerates all figures and CSV files into a local `mcf_pls_figs3/` directory.
 Runtime is approximately 2–4 hours on a standard CPU (the 37-core multi-seed run dominates).
 
-The entry point is `main()` at the bottom of the script. All random seeds are fixed
-(default seed = 42; multi-seed suite uses seeds 42–46) so results are fully reproducible.
+All random seeds are fixed (default seed = 42; multi-seed suite uses seeds 42–46)
+so results are fully reproducible.
+
+The original monolithic script is also kept for reference:
+```bash
+python mcf_pls_sim_v3.py   # identical output, single-file version
+```
 
 ---
 
