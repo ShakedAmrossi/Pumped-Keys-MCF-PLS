@@ -57,6 +57,7 @@ pump_keyed_mcf_pls_repo/
     ├── fig_protected2_37core_multiseed.png
     ├── fig_protected2_37core_sample_complexity.png
     ├── fig_protected2_37core_tap_sensitivity.png
+    ├── fig_qam_ber_protected2_37core.png
     ├── fig_spm_xpm_combo_37core.png
     └── fig_xpm_exploratory_benchmark.png
 ```
@@ -86,7 +87,10 @@ pip install numpy scipy matplotlib torch
 python run.py
 ```
 
-This regenerates all figures and CSV files into a local `mcf_pls_figs3/` directory.
+This regenerates all figures and CSV files into a local `mcf_pls_figs3/` directory,
+then mirrors the generated CSV artifacts into `data/` and the generated PNG
+artifacts into `figures/` so the repository's article assets stay aligned with
+the publication runner.
 Runtime is approximately 2–4 hours on a standard CPU (the 37-core multi-seed run dominates).
 
 All random seeds are fixed (default seed = 42; multi-seed suite uses seeds 42–46)

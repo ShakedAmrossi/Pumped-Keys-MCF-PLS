@@ -1,9 +1,7 @@
 """Physical model: FiberParams, MCFGeometry, HexMCFGeometry, CMESimulator, MCFEncryption."""
 from __future__ import annotations
-import os, csv, json, warnings
-from itertools import combinations
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional
 import numpy as np
 from scipy.integrate import solve_ivp
 from scipy.special import kv as bessel_K

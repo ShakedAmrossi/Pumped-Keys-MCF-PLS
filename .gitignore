@@ -1,0 +1,5 @@
+# Python cache / bytecode
+__pycache__/
+
+# Generated publication build output
+mcf_pls_figs3/

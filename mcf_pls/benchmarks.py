@@ -1162,6 +1162,11 @@ def write_minimum_publishable_plan(out_dir: str) -> None:
 - `fig_spm_xpm_combo_37core.png`
   Tests whether adding the same exploratory SPM+XPM block helps in the 37-core regime.
 
+## Supplementary figures
+
+- `fig_qam_ber_protected2_37core.png`
+  Tests whether the 37-core Protected2 regime preserves its security margin across QPSK, 16-QAM, and 64-QAM.
+
 ## Minimum tables / CSV files
 
 - `physical_parameter_traceability.csv`
@@ -1173,6 +1178,7 @@ def write_minimum_publishable_plan(out_dir: str) -> None:
 - `protected2_37core_multiseed_summary.csv`
 - `protected2_37core_sample_complexity.csv`
 - `protected2_37core_tap_sensitivity.csv`
+- `qam_ber_protected2_37core.csv`
 - `scaling_multiseed_summary.csv`
 - `scaling_significance_tests.csv`
 

@@ -1,6 +1,6 @@
 """I/O utilities, calibration writers, validation figures."""
 from __future__ import annotations
-import os, csv, json, warnings
+import os, csv, json, shutil, warnings
 from typing import Dict, List, Optional, Tuple
 import numpy as np
 import matplotlib
@@ -57,6 +57,27 @@ def write_submission_manifest(out_dir: str) -> None:
             "primary_data": "publication_suite_config.csv",
             "supporting_data": "",
             "manuscript_role": "Reference configuration and saved true key for the focused suite",
+        },
+        {
+            "artifact_type": "figure",
+            "artifact_name": "fig0_mcf_geometry.png",
+            "primary_data": "publication_suite_config.csv",
+            "supporting_data": "physical_parameter_traceability.csv",
+            "manuscript_role": "Geometry overview of the 13-core keyed multi-core fiber platform",
+        },
+        {
+            "artifact_type": "figure",
+            "artifact_name": "fig1_transfer_matrix.png",
+            "primary_data": "publication_suite_config.csv",
+            "supporting_data": "",
+            "manuscript_role": "Illustrative transfer-matrix comparison for the correct and wrong pump keys",
+        },
+        {
+            "artifact_type": "figure",
+            "artifact_name": "fig_validation.png",
+            "primary_data": "physical_parameter_traceability.csv",
+            "supporting_data": "validation_anchor_points.csv",
+            "manuscript_role": "Coupled-mode validation against analytical and wavelength-trend reference checks",
         },
         {
             "artifact_type": "figure",
@@ -122,6 +143,20 @@ def write_submission_manifest(out_dir: str) -> None:
             "manuscript_role": "Exploratory 37-core SPM versus SPM+XPM figure",
         },
         {
+            "artifact_type": "figure",
+            "artifact_name": "fig_xpm_exploratory_benchmark.png",
+            "primary_data": "xpm_exploratory_benchmark.csv",
+            "supporting_data": "",
+            "manuscript_role": "13-core exploratory comparison between SPM and SPM+XPM protection",
+        },
+        {
+            "artifact_type": "figure",
+            "artifact_name": "fig_qam_ber_protected2_37core.png",
+            "primary_data": "qam_ber_protected2_37core.csv",
+            "supporting_data": "",
+            "manuscript_role": "Supplementary 37-core Protected2 BER comparison across QPSK, 16-QAM, and 64-QAM",
+        },
+        {
             "artifact_type": "table",
             "artifact_name": "scaling_significance_tests.csv",
             "primary_data": "scaling_significance_tests.csv",
@@ -143,6 +178,13 @@ def write_submission_manifest(out_dir: str) -> None:
             "manuscript_role": "Parameter-to-source calibration appendix table",
         },
         {
+            "artifact_type": "table",
+            "artifact_name": "qam_ber_protected2_37core.csv",
+            "primary_data": "qam_ber_protected2_37core.csv",
+            "supporting_data": "",
+            "manuscript_role": "Supplementary modulation-format BER table for the 37-core Protected2 regime",
+        },
+        {
             "artifact_type": "document",
             "artifact_name": "minimum_publishable_figure_plan.md",
             "primary_data": "minimum_publishable_figure_plan.md",
@@ -151,6 +193,30 @@ def write_submission_manifest(out_dir: str) -> None:
         },
     ]
     _write_csv(os.path.join(out_dir, "reproducibility_manifest.csv"), rows)
+
+
+def sync_publication_artifacts(out_dir: str, base_dir: str) -> Dict[str, int]:
+    """
+    Mirror generated manuscript artifacts into the repository's `data/` and
+    `figures/` directories so the checked-in article assets match `run.py`.
+    """
+    data_dir = os.path.join(base_dir, "data")
+    figures_dir = os.path.join(base_dir, "figures")
+    _ensure(data_dir)
+    _ensure(figures_dir)
+
+    counts = {"csv": 0, "png": 0}
+    for name in os.listdir(out_dir):
+        src = os.path.join(out_dir, name)
+        if not os.path.isfile(src):
+            continue
+        if name.endswith(".csv"):
+            shutil.copy2(src, os.path.join(data_dir, name))
+            counts["csv"] += 1
+        elif name.endswith(".png"):
+            shutil.copy2(src, os.path.join(figures_dir, name))
+            counts["png"] += 1
+    return counts
 
 
 def write_physical_calibration_bundle(params: FiberParams,

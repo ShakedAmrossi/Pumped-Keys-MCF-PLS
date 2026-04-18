@@ -5,7 +5,8 @@ import numpy as np
 from mcf_pls.physics import FiberParams, MCFGeometry, MCFEncryption
 from mcf_pls.evaluation import TapObservationConfig, _resolve_tap_core_indices
 from mcf_pls.utils import (_ensure, _write_csv, plot_mcf_geometry,
-    validate_cme_simulator, plot_transfer_matrix, write_physical_calibration_bundle)
+    validate_cme_simulator, plot_transfer_matrix, write_physical_calibration_bundle,
+    sync_publication_artifacts)
 from mcf_pls.benchmarks import (benchmark_fo_wt_attack_suite, sweep_kpa_lr_sample_complexity,
     sweep_lstm_training_size, benchmark_core_scaling_13_19_37, benchmark_xpm_exploratory,
     validate_37core_protected2_multiseed, sweep_37core_sample_complexity,
@@ -104,6 +105,7 @@ def main():
         params, out_dir)
     write_minimum_publishable_plan(out_dir)
     write_submission_manifest(out_dir)
+    sync_counts = sync_publication_artifacts(out_dir, base_dir)
 
     print("\n" + "=" * 72)
     print("Focused suite complete.")
@@ -130,6 +132,8 @@ def main():
     print(f"Scaling-significance tests: {len(scaling_sig_tests)}")
     print(f"Calibration traceability rows: {len(trace_rows)}")
     print(f"Calibration anchor rows: {len(anchor_rows)}")
+    print(f"Supplementary QAM rows: {len(qam37_rows)}")
+    print(f"Synced article assets: {sync_counts['csv']} CSVs -> data/, {sync_counts['png']} PNGs -> figures/")
     print("=" * 72)
 
 
