@@ -259,6 +259,27 @@ def _evaluate_lstm_attack(y_train: np.ndarray,
     return _bit_error_rate(bits_test, _qpsk_demod_array(x_hat))
 
 
+def _apply_laser_phase_noise(x: np.ndarray,
+                             sigma_pn: float,
+                             rng: np.random.Generator) -> np.ndarray:
+    """
+    Wiener-process laser phase noise applied per symbol slot.
+
+    sigma_pn = sqrt(2*pi * linewidth * T_s) [rad/symbol], where linewidth is the
+    laser 3-dB linewidth and T_s is the symbol period.  At 10 GBd (T_s = 0.1 ns):
+      linewidth = sigma_pn^2 / (2*pi*T_s):
+      sigma_pn = 0.01 rad  →  linewidth ≈  159 kHz  (narrow-linewidth DFB / ECL class)
+      sigma_pn = 0.05 rad  →  linewidth ≈  3.98 MHz  (typical telecom DFB)
+      sigma_pn = 0.10 rad  →  linewidth ≈ 15.9 MHz  (wide-linewidth DFB)
+
+    The same phase walk is applied to all cores (single transmitter laser).
+    """
+    if sigma_pn == 0.0:
+        return x
+    phases = np.cumsum(rng.normal(scale=sigma_pn, size=(x.shape[0], 1)), axis=0)
+    return x * np.exp(1j * phases)
+
+
 def _build_linear_dataset(enc: MCFEncryption,
                           true_key: np.ndarray,
                           option: str,

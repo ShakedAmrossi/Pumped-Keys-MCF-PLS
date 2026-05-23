@@ -12,7 +12,8 @@ from mcf_pls.benchmarks import (benchmark_fo_wt_attack_suite, sweep_kpa_lr_sampl
     validate_37core_protected2_multiseed, sweep_37core_sample_complexity,
     sweep_37core_tap_sensitivity, benchmark_spm_xpm_combo_37core,
     sweep_qam_ber_protected2_37core, run_scaling_multiseed_significance,
-    write_minimum_publishable_plan)
+    write_minimum_publishable_plan,
+    sweep_fab_tolerance_37core, sweep_phase_noise_37core, sweep_lstm_window_ablation)
 from mcf_pls.utils import write_submission_manifest
 
 def main():
@@ -103,6 +104,10 @@ def main():
     qam37_rows = sweep_qam_ber_protected2_37core(params, out_dir, seed=seed)
     scaling_sig_rows, scaling_sig_tests = run_scaling_multiseed_significance(
         params, out_dir)
+    fab_tol_rows = sweep_fab_tolerance_37core(params, out_dir)
+    phase_noise_rows = sweep_phase_noise_37core(params, out_dir)
+    lstm_window_rows = sweep_lstm_window_ablation(params, out_dir)
+
     write_minimum_publishable_plan(out_dir)
     write_submission_manifest(out_dir)
     sync_counts = sync_publication_artifacts(out_dir, base_dir)
@@ -133,6 +138,9 @@ def main():
     print(f"Calibration traceability rows: {len(trace_rows)}")
     print(f"Calibration anchor rows: {len(anchor_rows)}")
     print(f"Supplementary QAM rows: {len(qam37_rows)}")
+    print(f"Fab tolerance rows: {len(fab_tol_rows)}")
+    print(f"Phase noise rows: {len(phase_noise_rows)}")
+    print(f"LSTM window ablation rows: {len(lstm_window_rows)}")
     print(f"Synced article assets: {sync_counts['csv']} CSVs -> data/, {sync_counts['png']} PNGs -> figures/")
     print("=" * 72)
 

@@ -1,5 +1,8 @@
 artifact_name,artifact_type,manuscript_role,primary_data,supporting_data
 publication_suite_config.csv,config,Reference configuration and saved true key for the focused suite,publication_suite_config.csv,
+fig0_mcf_geometry.png,figure,Geometry overview of the 13-core keyed multi-core fiber platform,publication_suite_config.csv,physical_parameter_traceability.csv
+fig1_transfer_matrix.png,figure,Illustrative transfer-matrix comparison for the correct and wrong pump keys,publication_suite_config.csv,
+fig_validation.png,figure,Coupled-mode validation against analytical and wavelength-trend reference checks,physical_parameter_traceability.csv,validation_anchor_points.csv
 fig_validation_calibration_overview.png,figure,"Calibration overview linking public geometry, internal simulation anchors, and the legacy SPM phase anchor",validation_anchor_points.csv,physical_parameter_traceability.csv
 fig_attack_benchmark_fo_wt.png,figure,Main 13-core benchmark under FO and WT,fo_wt_attack_benchmark.csv,
 fig_kpa_lr_sample_complexity_fo_wt.png,figure,13-core sample-complexity figure,fo_wt_kpa_lr_sample_complexity.csv,
@@ -9,7 +12,10 @@ fig_protected2_37core_multiseed.png,figure,Main 37-core multiseed validation fig
 fig_protected2_37core_sample_complexity.png,figure,37-core sample-complexity figure with confidence intervals,protected2_37core_sample_complexity_summary.csv,protected2_37core_sample_complexity.csv
 fig_protected2_37core_tap_sensitivity.png,figure,37-core tap-sensitivity figure,protected2_37core_tap_sensitivity.csv,
 fig_spm_xpm_combo_37core.png,figure,Exploratory 37-core SPM versus SPM+XPM figure,spm_xpm_combo_37core_benchmark.csv,
+fig_xpm_exploratory_benchmark.png,figure,13-core exploratory comparison between SPM and SPM+XPM protection,xpm_exploratory_benchmark.csv,
+fig_qam_ber_protected2_37core.png,figure,"Supplementary 37-core Protected2 BER comparison across QPSK, 16-QAM, and 64-QAM",qam_ber_protected2_37core.csv,
 scaling_significance_tests.csv,table,Formal permutation and bootstrap significance results,scaling_significance_tests.csv,scaling_multiseed_benchmark.csv
 protected2_37core_multiseed_summary.csv,table,Summary table for 37-core multiseed validation,protected2_37core_multiseed_summary.csv,protected2_37core_multiseed.csv
 physical_parameter_traceability.csv,table,Parameter-to-source calibration appendix table,physical_parameter_traceability.csv,validation_anchor_points.csv
+qam_ber_protected2_37core.csv,table,Supplementary modulation-format BER table for the 37-core Protected2 regime,qam_ber_protected2_37core.csv,
 minimum_publishable_figure_plan.md,document,Figure-selection and manuscript-logic guide,minimum_publishable_figure_plan.md,reproducibility_manifest.csv
